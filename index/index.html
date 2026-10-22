@@ -259,6 +259,40 @@
         next.disabled = current === slides.length - 1;
       };
       var goTo = function (i) {
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>зефирка — я крутой разработчик</title>
+  <meta name="description" content="зефирка — я крутой разработчик.">
+  <meta name="theme-color" content="#fbfbfa">
+  <style>
+    :root {
+      --bg: #fbfbfa;
+      --fg: #1c1c1c;
+      --muted: #7a7a7a;
+      color-scheme: light;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { background: var(--bg); }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      color: var(--fg);
+      font: 20px/1.6 Georgia, "Times New Roman", serif;
+      text-transform: lowercase;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    p, h1 { margin: 0; }
+    a { color: inherit; text-decoration: none; }
         i = Math.max(0, Math.min(slides.length - 1, i));
         track.scrollTo({ left: i * track.clientWidth, behavior: reduceMotion ? 'auto' : 'smooth' });
       };
@@ -297,30 +331,7 @@
       };
 
       var resize = function () {
-        var dpr = Math.min(window.devicePixelRatio || 1, 2);
-        W = window.innerWidth;
-        H = window.innerHeight;
-        canvas.width = Math.round(W * dpr);
-        canvas.height = Math.round(H * dpr);
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        var count = Math.max(40, Math.min(140, Math.round(W / 10)));
-        while (flakes.length < count) flakes.push(makeFlake(true));
-        if (flakes.length > count) flakes.length = count;
-      };
-
-      var tick = function () {
-        ctx.clearRect(0, 0, W, H);
-        for (var i = 0; i < flakes.length; i++) {
-          var f = flakes[i];
-          f.phase += f.speed;
-          f.y += f.vy;
-          if (f.y > H + f.r * 2) { flakes[i] = f = makeFlake(false); }
-          ctx.beginPath();
-          ctx.arc(f.x + Math.sin(f.phase) * f.sway, f.y, f.r, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(90,96,110,' + f.a.toFixed(2) + ')';
-          ctx.fill();
-        }
-        raf = requestAnimationFrame(tick);
+ationFrame(tick);
       };
 
       var stopSnow = function () {
